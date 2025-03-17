@@ -1,0 +1,25 @@
+# Definir la matriz tridimensional (3D) con temperaturas ficticias
+# Formato: temperaturas[ciudad][semana][día]
+temperaturas = [
+    [  # Ciudad 1
+        [30, 32, 31, 29, 28, 30, 31],  # Semana 1
+        [29, 31, 30, 28, 27, 29, 30]   # Semana 2
+    ],
+    [  # Ciudad 2
+        [25, 27, 26, 24, 23, 25, 26],  # Semana 1
+        [24, 26, 25, 23, 22, 24, 25]   # Semana 2
+    ]
+]
+
+# Lista de nombres de ciudades para referencia
+ciudades = ["Ciudad 1", "Ciudad 2"]
+
+# Calcular el promedio de temperatura por ciudad y semana
+for i in range(len(temperaturas)):  # Iterar sobre las ciudades
+    print(f"\nPromedios de temperatura para {ciudades[i]}:")
+    
+    for j in range(len(temperaturas[i])):  # Iterar sobre las semanas
+        suma = sum(temperaturas[i][j])  # Sumar todas las temperaturas de la semana
+        promedio = suma / len(temperaturas[i][j])  # Calcular el promedio
+        
+        print(f"  Semana {j + 1}: {promedio:.2f}°C")  # Mostrar el resultado
