@@ -1,40 +1,29 @@
 # Definir la matriz 3x3
 matriz = [
-    [9, 3, 5],
-    [7, 2, 8],
-    [4, 6, 1]
+    [5, 8, 3],
+    [2, 9, 4],
+    [7, 6, 1]
 ]
 
-def bubble_sort(fila):
+def buscar_valor(matriz, valor):
     """
-    Implementación de Bubble Sort para ordenar una fila en orden ascendente.
+    Busca un valor en una matriz bidimensional y devuelve su posición si se encuentra.
     """
-    n = len(fila)
-    for i in range(n - 1):
-        for j in range(n - 1 - i):
-            if fila[j] > fila[j + 1]:  # Intercambiar si el actual es mayor que el siguiente
-                fila[j], fila[j + 1] = fila[j + 1], fila[j]
+    for i in range(len(matriz)):  # Iterar sobre las filas
+        for j in range(len(matriz[i])):  # Iterar sobre las columnas
+            if matriz[i][j] == valor:
+                return i, j  # Retornar la posición del valor encontrado
+    return None  # Retornar None si no se encuentra el valor
 
-def ordenar_fila(matriz, fila_index):
-    """
-    Ordena una fila específica de la matriz usando Bubble Sort.
-    """
-    if 0 <= fila_index < len(matriz):  # Validar si el índice es válido
-        print("\nMatriz original:")
-        for fila in matriz:
-            print(fila)
+# Solicitar al usuario un número a buscar
+valor_a_buscar = int(input("Ingrese el número a buscar: "))
 
-        # Ordenar la fila seleccionada
-        bubble_sort(matriz[fila_index])
+# Buscar el número en la matriz
+posicion = buscar_valor(matriz, valor_a_buscar)
 
-        print(f"\nMatriz con la fila {fila_index} ordenada:")
-        for fila in matriz:
-            print(fila)
-    else:
-        print("\nÍndice de fila fuera de rango.")
+# Mostrar el resultado
+if posicion:
+    print(f"El número {valor_a_buscar} se encontró en la posición: {posicion}")
+else:
+    print(f"El número {valor_a_buscar} no se encuentra en la matriz.")
 
-# Solicitar al usuario la fila a ordenar
-fila_a_ordenar = int(input("Ingrese el índice de la fila a ordenar (0-2): "))
-
-# Llamar a la función para ordenar la fila
-ordenar_fila(matriz, fila_a_ordenar)
