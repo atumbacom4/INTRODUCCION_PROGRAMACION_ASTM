@@ -1,25 +1,32 @@
-# Definir la matriz tridimensional (3D) con temperaturas ficticias
-# Formato: temperaturas[ciudad][semana][día]
-temperaturas = [
-    [  # Ciudad 1
-        [30, 32, 31, 29, 28, 30, 31],  # Semana 1
-        [29, 31, 30, 28, 27, 29, 30]   # Semana 2
+# Definir la matriz tridimensional (3D) con temperaturas organizadas por ciudades, semanas y días
+temperaturas = {
+    "Ciudad A": [
+        [78, 80, 82, 79, 85, 88, 92],  # Semana 1
+        [76, 79, 83, 81, 87, 89, 93],  # Semana 2
+        [77, 81, 85, 82, 88, 91, 95],  # Semana 3
+        [75, 78, 80, 79, 84, 87, 91]   # Semana 4
     ],
-    [  # Ciudad 2
-        [25, 27, 26, 24, 23, 25, 26],  # Semana 1
-        [24, 26, 25, 23, 22, 24, 25]   # Semana 2
+    "Ciudad B": [
+        [62, 64, 68, 70, 73, 75, 79],  # Semana 1
+        [63, 66, 70, 72, 75, 77, 81],  # Semana 2
+        [61, 65, 68, 70, 72, 76, 80],  # Semana 3
+        [64, 67, 69, 71, 74, 77, 80]   # Semana 4
+    ],
+    "Ciudad C": [
+        [90, 92, 94, 91, 88, 85, 82],  # Semana 1
+        [89, 91, 93, 90, 87, 84, 81],  # Semana 2
+        [91, 93, 95, 92, 89, 86, 83],  # Semana 3
+        [88, 90, 92, 89, 86, 83, 80]   # Semana 4
     ]
-]
+}
 
-# Lista de nombres de ciudades para referencia
-ciudades = ["Ciudad 1", "Ciudad 2"]
+# Función para calcular los promedios de temperatura por ciudad y semana
+def calcular_promedios(temperaturas):
+    for ciudad, datos_ciudad in temperaturas.items():  # Iterar sobre ciudades
+        print(f"\nPromedio de temperaturas en {ciudad}:")
+        for semana_idx, semana in enumerate(datos_ciudad):  # Iterar sobre semanas
+            promedio = sum(semana) / len(semana)
+            print(f"  Semana {semana_idx + 1}: {promedio:.2f}°C")
 
-# Calcular el promedio de temperatura por ciudad y semana
-for i in range(len(temperaturas)):  # Iterar sobre las ciudades
-    print(f"\nPromedios de temperatura para {ciudades[i]}:")
-    
-    for j in range(len(temperaturas[i])):  # Iterar sobre las semanas
-        suma = sum(temperaturas[i][j])  # Sumar todas las temperaturas de la semana
-        promedio = suma / len(temperaturas[i][j])  # Calcular el promedio
-        
-        print(f"  Semana {j + 1}: {promedio:.2f}°C")  # Mostrar el resultado
+# Ejecutar la función
+calcular_promedios(temperaturas)
