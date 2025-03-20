@@ -1,0 +1,11 @@
+#Patrones con * Anthony Sebastian Tumbaco Miranda
+#Pide un número n y genera el siguiente patrón con *:
+
+
+n = int(input("Ingrese un número: "))
+
+for i in range(1, 2 * n):  # Itera hasta 2n-1 para crear la forma completa
+    if i <= n:  
+        print("*" * i)  # Parte creciente
+    else:
+        print("*" * (2 * n - i))  # Parte decreciente
